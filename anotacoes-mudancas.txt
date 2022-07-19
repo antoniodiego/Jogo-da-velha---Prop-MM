@@ -1,0 +1,4 @@
+0.1.7
+Melhorei atualiza??o de tela ap?s jogadas.
+0.1.6
+Melhorei velocidade jogadas m?quina

@@ -1,0 +1,1 @@
+27/09/18 21:49 Reimplementei antevis?o poss vit com matriz e local simples
