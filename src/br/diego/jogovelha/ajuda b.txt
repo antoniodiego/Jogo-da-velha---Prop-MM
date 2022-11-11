@@ -1,0 +1,8 @@
+ O jogo pode ser jogado contra o dispositivo, através do Dente Azul ou pela Internet.
+
+ Para jogar contra o dispositivo escolha no Menu principal a opção Contra dispositivo.
+ Para estabelecer a conexão usando o Dente azul:
+ No Menu principal, em um dos dispositivos, escolha a opção Dente azul, e depois a opção Criar jogo. Em outro dispositivo, no Menu principal, escolha a opção Dente azul e, depois, Procurar jogo e, então dê o comando Buscar, para iniciar a busca por dispositivos que estão esperando para jogar. Depois de concluída a busca, escolha o dispositivo contra quem tu queres jogar.
+
+ Via internet:
+ Em um dos dispositivos, no Menu principal, escolha a opção Internet e depois Iniciar jogo. No outro dispositivo escolha Internet e depois Entrar em jogo, digite o PI que aparece na tela do outro dispositivo e clique em Conectar.
