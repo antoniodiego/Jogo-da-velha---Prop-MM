@@ -1,4 +1,3 @@
-
 package br.diego.jogovelha.jogo.ia;
 
 import br.diego.jogovelha.jogo.Constantes;
@@ -13,6 +12,7 @@ public class TabuleiroMatriz {
      * Incia com zeros
      */
     public int[][] matriz = new int[3][3];
+    public StringBuffer id = new StringBuffer();
 
     public TabuleiroMatriz recebeCop() {
         TabuleiroMatriz n = new TabuleiroMatriz();
@@ -22,6 +22,7 @@ public class TabuleiroMatriz {
                 n.matriz[col][li] = matriz[col][li];
             }
         }
+        n.id = new StringBuffer(id.toString());
         return n;
     }
 
@@ -36,5 +37,18 @@ public class TabuleiroMatriz {
         }
 
         return true;
+    }
+
+    public void imprime() {
+        for (int li = 0; li < 3; li++) {
+            for (int col = 0; col < 3; col++) {
+                //Perc col por linha
+
+                System.out.print((char) matriz[col][li]);
+                System.out.print("|");
+
+            }
+            System.out.println();
+        }
     }
 }

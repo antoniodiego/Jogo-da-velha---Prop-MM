@@ -20,6 +20,7 @@ public class Tabuleiro {
     private final Lugar[] lugares = new Lugar[9];
     public final Tira[] tira = new Tira[8];
     int corTabuleiro = 0x000000;
+    public StringBuffer id = new StringBuffer();
 
     public Tabuleiro(int largura, int altura) {
         this.largura = largura;
@@ -155,7 +156,7 @@ public class Tabuleiro {
     }
 
     public boolean eFinal() {
-        return est\u00e1Cheio() || Juiz.temVencedor(this);
+        return est\u00e1Cheio() || Testador.temVencedor(this);
     }
 
     public Tabuleiro recebeCopia() {

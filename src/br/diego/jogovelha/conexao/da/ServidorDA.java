@@ -123,7 +123,7 @@ public class ServidorDA implements Runnable {
 				rival.setNome(dispositivo.getFriendlyName(true));// sr.getHostDevice().getFriendlyName(true);
 			}
 
-			rival.setCaracter(Constantes.CARACTER_CONVIDADO);
+			rival.setCaracter(Constantes.CARACTERE_CONVIDADO);
 			rival.setId(2);
 			rival.setPontos(0);
 

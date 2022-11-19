@@ -77,7 +77,7 @@ public class ServidorInternet implements CommandListener, Runnable {
 			jogador.setPontos(0);
 
 			Rival rival = new Rival();
-			rival.setCaracter(Constantes.CARACTER_CONVIDADO);
+			rival.setCaracter(Constantes.CARACTERE_CONVIDADO);
 			rival.setId(2);
 			rival.setPontos(0);
 

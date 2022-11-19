@@ -53,7 +53,7 @@ public class QuadroVelha extends Canvas
      */
     public final Tabuleiro tabuleiro;
     private final Lapis lapis;
-    private final Juiz juiz;
+    private final Testador juiz;
     public final Jogador jogador;
     private final Rival rival;
     /**
@@ -129,7 +129,7 @@ public class QuadroVelha extends Canvas
         this.lapis.setJogo(this);
         this.lapis.setLugar(
                 tabuleiro.getLugares()[Tabuleiro.retornaIndice(2, 2)]);
-        this.juiz = new Juiz();
+        this.juiz = new Testador();
         this.jogador = jogador;
         this.rival = rival;
         this.ia = new InteligenciaArtificial(tabuleiro);
@@ -443,12 +443,13 @@ public class QuadroVelha extends Canvas
             //FIXME: Come? com prim vazio
             constroiMapV();
             tit.append(mapaV[lapis.getLugar().getIndice()]);
+            tabuleiro.id.append(lapis.getLugar().getIndice()+1);
             rodada++;
             if (doisJogadores) {
                 envia(lapis.getLugar().getIndice());
             }
             vezJogador = false;
-            System.out.println("Jogador jogou. Verficando...");
+            System.out.println("Jogador jogou. Verficando se jogo acabou...");
             juiz.verifica(this);
             repaint();
             serviceRepaints();
@@ -457,7 +458,8 @@ public class QuadroVelha extends Canvas
             if (!doisJogadores && !vezJogador) {
                 // FIXME: Repetido.
                 // A jogada final em que a m?quina ganha pode estar aqui
-                System.out.println("Jogada maq: " + rodada + "em confirma");
+                System.out.println("Jogada da m?quina na rodada " + rodada + 
+                        "em confirma)");
                 fazJogadaArtificial();
                 System.out.println("M?quina jogou rodada: " + rodada);
                 System.out.println("Repintando");

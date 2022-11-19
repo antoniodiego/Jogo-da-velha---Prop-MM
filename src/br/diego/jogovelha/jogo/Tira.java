@@ -31,17 +31,17 @@ public class Tira {
 				&& lugares[1].recebeMarca() == lugares[2].recebeMarca()) {
 			char letraVencedor = lugares[0].recebeMarca();
 			if (letraVencedor == Constantes.SEM_MARCA) {
-				return Juiz.JogoContinua;
+				return Testador.JogoContinua;
 			}
 			if (letraVencedor == Constantes.CARACTER_INICIADOR_JOGO) {
-				return Juiz.VITORIA_INICIADOR;
-			} else if (letraVencedor == Constantes.CARACTER_CONVIDADO) {
-				return Juiz.VITORIA_CONVIDADO;
+				return Testador.VITORIA_INICIADOR;
+			} else if (letraVencedor == Constantes.CARACTERE_CONVIDADO) {
+				return Testador.VITORIA_CONVIDADO;
 			} else {
 				return -1;
 			}
 		} else {
-			return Juiz.JogoContinua;
+			return Testador.JogoContinua;
 		}
 	}
 	

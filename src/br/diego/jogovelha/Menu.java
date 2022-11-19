@@ -115,7 +115,7 @@ public class Menu extends List implements CommandListener {
 
 		Rival rival = new Rival();
 		rival.setPontos(0);
-		rival.setCaracter(Constantes.CARACTER_CONVIDADO);
+		rival.setCaracter(Constantes.CARACTERE_CONVIDADO);
 		QuadroVelha canvasVelha = new QuadroVelha(midlet, jogador, rival);
 		canvasVelha.setDoisJogadores(false);
 		canvasVelha.getLapis().setVis\u00edvel(true);

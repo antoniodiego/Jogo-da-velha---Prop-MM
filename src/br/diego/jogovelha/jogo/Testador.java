@@ -6,7 +6,7 @@ package br.diego.jogovelha.jogo;
  * @author Ant??nio Diego
  *
  */
-public class Juiz {
+public class Testador {
 
     /**
      * Indica que o n??o h?? vit??ria nem empate na jogada.
@@ -23,7 +23,7 @@ public class Juiz {
     public static final int EMPATE = 3;
     // private final Tabuleiro tabuleiro;
 
-    public Juiz() {
+    public Testador() {
         // this.tabuleiro = tabuleiro;
     }
 
@@ -32,7 +32,7 @@ public class Juiz {
             int resultado = tabuleiro.tira[i].verifica();
             if (resultado == VITORIA_INICIADOR) {
                 return VITORIA_INICIADOR;
-            } else if (resultado == Juiz.VITORIA_CONVIDADO) {
+            } else if (resultado == Testador.VITORIA_CONVIDADO) {
                 return VITORIA_CONVIDADO;
             }
         }
@@ -47,7 +47,7 @@ public class Juiz {
     public static boolean temVencedor(Tabuleiro tabuleiro) {
         for (int i = 0; i < 8; i++) {
             int resultado = tabuleiro.tira[i].verifica();
-            if (resultado == VITORIA_INICIADOR || resultado == Juiz.VITORIA_CONVIDADO) {
+            if (resultado == VITORIA_INICIADOR || resultado == Testador.VITORIA_CONVIDADO) {
                 return true;
             }
         }
@@ -72,7 +72,7 @@ public class Juiz {
                     jogo.perdeu();
                 }
                 return;
-            } else if (resultado == Juiz.VITORIA_CONVIDADO) {
+            } else if (resultado == Testador.VITORIA_CONVIDADO) {
                 jogo.tabuleiro.esvazia();
 
                 if (!jogo.jogador.ePrimeiroJogador()) {

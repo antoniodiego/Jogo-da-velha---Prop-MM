@@ -260,7 +260,7 @@ public class ClienteDA implements DiscoveryListener {
                             .open(url);
 
                     Jogador jogador = new Jogador();
-                    jogador.setCaracter(Constantes.CARACTER_CONVIDADO);
+                    jogador.setCaracter(Constantes.CARACTERE_CONVIDADO);
                     //jogador.isPlayer1 = false;
                     jogador.mudaPrimeiroJogador(false);
                     // jogador.nome = localDevice.getFriendlyName();
