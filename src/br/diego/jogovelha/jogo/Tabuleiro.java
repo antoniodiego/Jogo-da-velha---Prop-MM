@@ -21,6 +21,7 @@ public class Tabuleiro {
     public final Tira[] tira = new Tira[8];
     int corTabuleiro = 0x000000;
     public StringBuffer id = new StringBuffer();
+    public boolean primeiraPartida;
 
     public Tabuleiro(int largura, int altura) {
         this.largura = largura;

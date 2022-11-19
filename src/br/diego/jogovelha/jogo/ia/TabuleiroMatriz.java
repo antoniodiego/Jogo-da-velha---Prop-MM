@@ -39,6 +39,24 @@ public class TabuleiroMatriz {
         return true;
     }
 
+    /**
+     * Testa se tem alguma caza que tem marca
+     *
+     * @return
+     */
+    public boolean vazio() {
+        for (int li = 0; li < 3; li++) {
+            for (int col = 0; col < 3; col++) {
+                //Perc col por linha
+                if (matriz[col][li] != Constantes.SEM_MARCA) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void imprime() {
         for (int li = 0; li < 3; li++) {
             for (int col = 0; col < 3; col++) {

@@ -443,7 +443,7 @@ public class QuadroVelha extends Canvas
             //FIXME: Come? com prim vazio
             constroiMapV();
             tit.append(mapaV[lapis.getLugar().getIndice()]);
-            tabuleiro.id.append(lapis.getLugar().getIndice()+1);
+            tabuleiro.id.append(lapis.getLugar().getIndice() + 1);
             rodada++;
             if (doisJogadores) {
                 envia(lapis.getLugar().getIndice());
@@ -458,8 +458,8 @@ public class QuadroVelha extends Canvas
             if (!doisJogadores && !vezJogador) {
                 // FIXME: Repetido.
                 // A jogada final em que a m?quina ganha pode estar aqui
-                System.out.println("Jogada da m?quina na rodada " + rodada + 
-                        "em confirma)");
+                System.out.println("Jogada da m?quina na rodada " + rodada
+                        + "em confirma)");
                 fazJogadaArtificial();
                 System.out.println("M?quina jogou rodada: " + rodada);
                 System.out.println("Repintando");
@@ -496,20 +496,6 @@ public class QuadroVelha extends Canvas
      * Faz jogada da m??quina.
      */
     private void fazJogadaArtificial() {
-        /*
-		 * int[][] tab = new int[3][3];
-		 * 
-		 * for (int i = 0; i < this.tabuleiro.lugares.length; i++) { tab[i /
-		 * 3][i % 3] = this.tabuleiro.lugares[i].marca; //System.out.println(
-		 * "l " + i / 3 + " c " + i % 3 + " v " + tabuleiro.lugar[i].marca); }
-		 * 
-		 * tab = minimax.decisao_minimax(tab);
-		 * 
-		 * int indice; for (int i = 0; i < 3; i++) { for (int j = 0; j < 3; j++)
-		 * { //x / 3 = i3+j indice = 3 * i + j; // System.out.println(indice);
-		 * this.tabuleiro.lugares[indice].marca = (char) tab[i][j]; } }
-         */
-
         ia.fazJogadaDispositivo(rodada, this);
         constroiMapV();
         rodada++;
@@ -575,10 +561,10 @@ public class QuadroVelha extends Canvas
         serviceRepaints();
 
         if (!doisJogadores) {
-            System.out.println("Jogada maq: " + rodada + " em perdeu()");
+            System.out.println("Jogada maq?quina: " + rodada + " em perdeu()");
 
             //FIXME: [Loop [infinito] ] Tempo muito grande ao m?quina ser prim
-            //FIXME: Jogo fica travado
+            tabuleiro.primeiraPartida = true;
             fazJogadaArtificial();
         }
     }
@@ -593,6 +579,7 @@ public class QuadroVelha extends Canvas
             lapis.setVis\u00edvel(false);
             vezJogador = false;
             if (!doisJogadores) {
+                tabuleiro.primeiraPartida = true;
                 fazJogadaArtificial();
             }
         }

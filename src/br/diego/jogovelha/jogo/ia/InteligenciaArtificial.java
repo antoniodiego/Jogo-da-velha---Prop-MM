@@ -9,6 +9,7 @@ import br.diego.jogovelha.jogo.QuadroVelha;
 import br.diego.jogovelha.jogo.Tabuleiro;
 import br.diego.jogovelha.util.Verificador;
 import java.util.Enumeration;
+import java.util.Random;
 
 /**
  * Classe que processa a intelig??ncia artificial da m??quina. Ela ? sempre o
@@ -57,14 +58,24 @@ public class InteligenciaArtificial {
             copiaTabuleiro.matriz[lugaresOr[i].coluna - 1][lugaresOr[i].linha
                     - 1] = lugaresOr[i].recebeMarca();
         }
-        // Decide o melhor lugar para ser marcado pela m??quina.
-        //17/05/18 - Aqui deveria entrar no linha min
-        int idx = decideMelhorJogada(copiaTabuleiro, rodada, pai.getTit().
-                toString());
-        tabuleiroOriginal.recebeLugar(idx)
+
+        int posicaoEscolhida = 0;
+        if (copiaTabuleiro.vazio()) {
+            System.out.println("Vazio");
+            Random rand = new Random();
+            int posicaoSorteda = rand.nextInt(9);
+            posicaoEscolhida = posicaoSorteda;
+        } else {
+            // Decide o melhor lugar para ser marcado pela m??quina.
+            //17/05/18 - Aqui deveria entrar no linha min
+            int idx = decideMelhorJogada(copiaTabuleiro, rodada, pai.getTit().
+                    toString());
+            posicaoEscolhida = idx;
+        }
+        tabuleiroOriginal.recebeLugar(posicaoEscolhida)
                 .mudaMarca(Constantes.CARACTERE_CONVIDADO);
-        tabuleiroOriginal.id.append(idx + 1);
-        pai.getTit().append(pai.getMapaV()[idx]);
+        tabuleiroOriginal.id.append(posicaoEscolhida + 1);
+        pai.getTit().append(pai.getMapaV()[posicaoEscolhida]);
     }
 
     /**
@@ -212,7 +223,7 @@ public class InteligenciaArtificial {
             System.out.println(valores[i]);
         }
 
-        int indiceMelhor = 0;
+        int indicePrimeiroMaior = 0;
 
         //   if (paraMaquina) {
         if (rodada
@@ -239,31 +250,44 @@ public class InteligenciaArtificial {
             if (valorL > maiorValor) {
                 System.out.println("Novo valor: " + valorL);
                 maiorValor = valorL;
-                indiceMelhor = c;
+                indicePrimeiroMaior = c;
             }
         }
-//            } else {
-//                indiceMelhor = 0;
-//            }
-        //   }
+
+        Vector indicesMaior = new Vector();
+
+        for (int c = 0;
+                c < valores.length;
+                c++) {
+         
+            if (dadosV[c] != 0 && valores[c] == maiorValor) {
+                indicesMaior.addElement(new Integer((c)));
+            }
+        }
+
+        int totalMaiores = indicesMaior.size();
+
+        Random r = new Random();
+
+        int indPosicaoSorteda = r.nextInt(totalMaiores);
+        Integer posicaoSorteada = (Integer) indicesMaior
+                .elementAt(indPosicaoSorteda);
+
+        depura = true;
+        
         if (depura) {
             System.out.println(
-                    "Indice melhor: " + indiceMelhor);
-        }
-        ///  Integer melhorV = (Integer) vazios.elementAt(indiceMelhor);
-        if (depura) {
+                    "Indice melhor: " + indicePrimeiroMaior);
             System.out.println(
-                    "Melhor: " + indiceMelhor);
+                    "Posicao sorteda: " + posicaoSorteada);
         }
+      
 
         //  if (depura) {
         System.out.println(
                 "Tempo dec deci ms: " + (System.currentTimeMillis() - tempoIn));
-        //  }
-        return indiceMelhor;//melhorV.intValue();
-        // } else {
-        //
-        // }
+      
+        return posicaoSorteada.intValue();
     }
 
     /**
@@ -288,7 +312,7 @@ public class InteligenciaArtificial {
         //Testa se ? terminal e arma em res
         int resultado = testaTerminal(tabuleiro);
 
-        System.out.println("Resultado: "+resultado);
+        System.out.println("Resultado: " + resultado);
         //Empatou, perdeu, ganhou
         boolean jogadaFinal = (resultado != Testador.JogoContinua);
         //true se min - X
@@ -300,8 +324,8 @@ public class InteligenciaArtificial {
         );
 
         tabuleiro.imprime();
-        System.out.println("C?digo tab: " + tabuleiro.id+ " final: "+
-                jogadaFinal);
+        System.out.println("C?digo tab: " + tabuleiro.id + " final: "
+                + jogadaFinal);
 
         if (jogadaFinal) {
             //Jogo acabou
@@ -518,10 +542,10 @@ public class InteligenciaArtificial {
 
         System.out.println("Ninguem venceu");
         //Ning?em venceu
-        
+
         System.out.println("Testando se t? cheio: ");
         tab.imprime();
-        
+
         if (tab.cheio()) {
             return Testador.EMPATE;
         } else {
