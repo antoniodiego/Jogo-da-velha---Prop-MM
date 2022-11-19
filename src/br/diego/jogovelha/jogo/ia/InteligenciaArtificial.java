@@ -288,6 +288,7 @@ public class InteligenciaArtificial {
         //Testa se ? terminal e arma em res
         int resultado = testaTerminal(tabuleiro);
 
+        System.out.println("Resultado: "+resultado);
         //Empatou, perdeu, ganhou
         boolean jogadaFinal = (resultado != Testador.JogoContinua);
         //true se min - X
@@ -295,12 +296,13 @@ public class InteligenciaArtificial {
         int pontuacao = 0;
         System.out.println("Minimax na rodada " + rodada + ". Max: "
                 + maximizador
-                + " Tabuleiro "+(tabuleiro.id)+": "
+                + " Tabuleiro " + (tabuleiro.id) + ": "
         );
 
         tabuleiro.imprime();
-        System.out.println("C?digo tab: " + tabuleiro.id);
-        
+        System.out.println("C?digo tab: " + tabuleiro.id+ " final: "+
+                jogadaFinal);
+
         if (jogadaFinal) {
             //Jogo acabou
 
@@ -374,12 +376,13 @@ public class InteligenciaArtificial {
             System.out.println("Testando vazios em: ");
             tabuleiro.imprime();
             System.out.println("C?digo: " + tabuleiro.id);
-            System.out.println((maximizador ? "max" : "min") + " rodada " + rodada);
+            System.out.println((maximizador ? "max" : "min") + " rodada "
+                    + rodada);
             TabuleiroMatriz filho;
             //Integer indiceV;
             String titB;
             int pior;
-            System.out.println("For rodada " + (rodada) + " "+tabuleiro.id);
+            System.out.println("For rodada " + (rodada) + " " + tabuleiro.id);
 
             for (int c = 0; c < tamVazios; c++) {
                 if (vazios[c] == 0) {
@@ -389,33 +392,33 @@ public class InteligenciaArtificial {
                 filho = tabuleiro.recebeCop();
                 //Fazer jogada advers?rio,isto ?, o iniciador, X.
                 System.out.println("Marcando " + Constantes.CARACTERE_CONVIDADO
-                        + " em " + (c) + " na rodada " + (rodada + 1)+" "+
-                        tabuleiro.id);
+                        + " em " + (c) + " na rodada " + (rodada + 1) + " "
+                        + tabuleiro.id);
 
                 filho.matriz[Tabuleiro.retornaCol(c)][Tabuleiro.retornaLin(c)]
                         = Constantes.CARACTERE_CONVIDADO;
 
                 filho.id.append(c + 1);
-                
+
                 System.out.println("Filho indice: " + c + " rod filh: "
                         + (rodada + 1));
 
                 titB = tit + (c + 1);
-                System.out.println("T?tulo: " + titB);
+                System.out.println("Rodando minimax. C?digo: " + titB);
                 filho.imprime();
 
                 pior = minimax(filho, rodada + 1, alfa, beta, false, titB);
-                System.out.println(titB+"result minmax min marc indice " + c
+                System.out.println(titB + "result minmax min marc indice " + c
                         + " em rod " + rodada + " " + pior);
-                System.out.println(filho.id + " pior " + pior + " em "+
-                        tabuleiro.id);
+                System.out.println(filho.id + " pior " + pior + " em "
+                        + tabuleiro.id);
                 System.out.println("Filho: ");
                 filho.imprime();
                 System.out.println("Pior valor min p/ marca indice " + c
                         + " em                rod " + (rodada + 1) + " " + pior);
 
-                System.out.println("Achou pior " + pior + " rodada " + (rodada)+
-                        " "+filho.id);
+                System.out.println("Achou pior " + pior + " rodada " + (rodada)
+                        + " " + filho.id);
                 melhor = Math.max(melhor, pior);
                 alfa = Math.max(alfa, melhor);
                 //  System.out.println("Novo alfa: " + alfa);
@@ -427,8 +430,8 @@ public class InteligenciaArtificial {
                 }
             }
             System.out.println("Fim for rodada " + (rodada));
-            System.out.println("Melhor " +melhor+" rodada " + rodada + " " + 
-                    (tabuleiro.id)
+            System.out.println("Melhor " + melhor + " rodada " + rodada + " "
+                    + (tabuleiro.id)
                     + " Tabuleiro: ");
             tabuleiro.imprime();
 
@@ -488,8 +491,8 @@ public class InteligenciaArtificial {
                 //  System.out.println("Filho indice: " + c + " rod filh: " + (rodada + 1));
                 filho.id.append(c + 1);
                 titB = tit + (c + 1);
-                System.out.println("tit: " + titB);
-                //    filho.imprime();
+                System.out.println("Minimax (min) em codigo " + titB);
+                filho.imprime();
                 max = minimax(filho, rodada + 1, alfa, beta, true, titB);
                 System.out.println("Max para " + filho.id + " " + max);
                 // System.out.println("result minmax max marc indice " + c + " em rod " + (rodada + 1) + " " + max);
@@ -513,7 +516,12 @@ public class InteligenciaArtificial {
             return Testador.VITORIA_CONVIDADO;
         }
 
+        System.out.println("Ninguem venceu");
         //Ning?em venceu
+        
+        System.out.println("Testando se t? cheio: ");
+        tab.imprime();
+        
         if (tab.cheio()) {
             return Testador.EMPATE;
         } else {

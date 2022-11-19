@@ -89,6 +89,7 @@ public class Tabuleiro {
         for (int i = 0; i < lugares.length; i++) {
             lugares[i].limpa();
         }
+        id = new StringBuffer();
     }
 
     /**

@@ -30,7 +30,7 @@ public class TabuleiroMatriz {
         for (int li = 0; li < 3; li++) {
             for (int col = 0; col < 3; col++) {
                 //Perc col por linha
-                if (matriz[col][li] != Constantes.SEM_MARCA) {
+                if (matriz[col][li] == Constantes.SEM_MARCA) {
                     return false;
                 }
             }
