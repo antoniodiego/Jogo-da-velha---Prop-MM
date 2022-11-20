@@ -378,13 +378,13 @@ public class InteligenciaArtificial {
                                     testaPossibilidadeVitoria[0].coluna + 1);
                     vazios[idCV] = 1;
 
-                    //return 0;
+                    return -11;
                     /*N?o ? bom retornar zero pois pode levar a uma vit?rio, 
                      isto ? ter valor 10.*/
                 } else if (testaPossibilidadeVitoria.length >= 2) {
                     //Advers?rio tem pelo menos duas possi vi
                     System.out.println("2 possibilidades de vit?ria");
-                    pontuacao = -10;
+                    pontuacao = -12;
                     return pontuacao;
                 }
             } else {
@@ -481,13 +481,13 @@ public class InteligenciaArtificial {
                     //  vazios = new int[1];
                     int idCV = Tabuleiro.retornaIndice(psV[0].linha + 1, psV[0].coluna + 1);
                     vazios[idCV] = 1;
-                    //  return 0;
+                    return 11;
                 } else if (psV.length >= 2) {
                     /*Duas possibilidades vit para O
                      Esse tabuleiro(filho) tem certamente pontua??o 10(para max -O)
                      */
                     //  System.out.println("2 poss");
-                    return 10;
+                    return 12;
                 }
             } else {
                 //Retornar o menor do advers?rio
@@ -541,7 +541,7 @@ public class InteligenciaArtificial {
                     System.out.println("Corte AlfaBeta min ao avaliar: "
                             + "" + titB);
                     //FIXME: Corrigir problema com poda alfa beta
-                   // break;
+                    // break;
                 }
             }
             return pior;
