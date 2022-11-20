@@ -259,7 +259,7 @@ public class InteligenciaArtificial {
         for (int c = 0;
                 c < valores.length;
                 c++) {
-         
+
             if (dadosV[c] != 0 && valores[c] == maiorValor) {
                 indicesMaior.addElement(new Integer((c)));
             }
@@ -274,19 +274,18 @@ public class InteligenciaArtificial {
                 .elementAt(indPosicaoSorteda);
 
         depura = true;
-        
+
         if (depura) {
             System.out.println(
                     "Indice melhor: " + indicePrimeiroMaior);
             System.out.println(
                     "Posicao sorteda: " + posicaoSorteada);
         }
-      
 
         //  if (depura) {
         System.out.println(
                 "Tempo dec deci ms: " + (System.currentTimeMillis() - tempoIn));
-      
+
         return posicaoSorteada.intValue();
     }
 
@@ -447,8 +446,8 @@ public class InteligenciaArtificial {
                 alfa = Math.max(alfa, melhor);
                 //  System.out.println("Novo alfa: " + alfa);
                 if (beta <= alfa) {
-                    /*System.out.println("corte alfb max [em] ap?s avaliar: "
-                     + titB);*/
+                    System.out.println("Corte AlfaBeta max ao avaliar: "
+                            + "" + titB);
 
                     break;
                 }
@@ -473,7 +472,8 @@ public class InteligenciaArtificial {
                 if (psV.length == 1) {
                     //Tem possibilidade de vit?ria para O[advers?rio ()]
                     /*Local previlegiado para X(min)[max - O]
-                     *   Obs: Ele ? importante independente do valor ou se leva a um empate.
+                     *   Obs: Ele ? importante independente do valor ou se 
+                     leva a um empate.
                      Os outros lugares dever?o ter pontua??o -10;
                      Esse precisa ser analizado.
                      */
@@ -504,14 +504,26 @@ public class InteligenciaArtificial {
             TabuleiroMatriz filho;
             String titB;
             int max;
+
+            System.out.println("Testando vazios em (" + tabuleiro.id + ")");
+            tabuleiro.imprime();
+
+            System.out.println("Vazios:");
             for (int c = 0; c < tamV; c++) {
+                System.out.print(vazios[c] + "-");
+            }
+            System.out.println("");
+
+            for (int c = 0; c < tamV; c++) {
+
                 if (vazios[c] == 0) {
                     continue;
                 }
                 //Integer indiceV = (Integer) vazios.elementAt(c);
                 filho = tabuleiro.recebeCop();
                 //Convi adv
-                filho.matriz[Tabuleiro.retornaCol(c)][Tabuleiro.retornaLin(c)] = Constantes.CARACTER_INICIADOR_JOGO;
+                filho.matriz[Tabuleiro.retornaCol(c)][Tabuleiro.retornaLin(c)]
+                        = Constantes.CARACTER_INICIADOR_JOGO;
                 //  System.out.println("Filho indice: " + c + " rod filh: " + (rodada + 1));
                 filho.id.append(c + 1);
                 titB = tit + (c + 1);
@@ -519,13 +531,17 @@ public class InteligenciaArtificial {
                 filho.imprime();
                 max = minimax(filho, rodada + 1, alfa, beta, true, titB);
                 System.out.println("Max para " + filho.id + " " + max);
-                // System.out.println("result minmax max marc indice " + c + " em rod " + (rodada + 1) + " " + max);
+                /* System.out.println("result minmax max marc indice " + c + " 
+                 em rod " + (rodada + 1) + " " + max);
+                 */
                 pior = Math.min(pior, max);
                 beta = Math.min(pior, beta);
                 // System.out.println("Novo beta: " + beta);
                 if (beta <= alfa) {
-                    //   System.out.println("corte alfb min [em] ap?s avaliar: " + titB);
-                    break;
+                    System.out.println("Corte AlfaBeta min ao avaliar: "
+                            + "" + titB);
+                    //FIXME: Corrigir problema com poda alfa beta
+                   // break;
                 }
             }
             return pior;
