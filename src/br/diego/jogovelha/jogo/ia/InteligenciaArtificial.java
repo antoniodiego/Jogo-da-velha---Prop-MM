@@ -333,16 +333,16 @@ public class InteligenciaArtificial {
                 //Vit?ria da m?quina
                 case Testador.VITORIA_CONVIDADO:
                     if (maximizador) {
-                        pontuacao = 10; //- rodada;
+                        pontuacao = 12; //- rodada;
                     } else {
-                        pontuacao = -10;
+                        pontuacao = -12;
                     }
                     break;
                 case Testador.VITORIA_INICIADOR:
                     if (maximizador) {
-                        pontuacao = -10;//+ rodada;
+                        pontuacao = -12;//+ rodada;
                     } else {
-                        pontuacao = 10;
+                        pontuacao = 12;
                     }
                     break;
                 case Testador.EMPATE:
@@ -365,11 +365,12 @@ public class InteligenciaArtificial {
             int[] vazios = new int[9];
             //posiv
             if (testaPossibilidadeVitoria.length > 0) {
-                System.out.println("Possibilidades de vit?ria");
+                System.out.println("Possibilidades de vit?ria X");
                 if (testaPossibilidadeVitoria.length == 1) {
                     System.out.println("Uma possibilidade");
                     /*Local previlegiado para max - O
-                     Obs: [Ele ? importante independente do valor ou se leva a um
+                     Obs: [Ele ? importante independente do valor ou se leva a
+                    um
                      empate.]
                      */
                     // vazios = new int[1];
@@ -378,13 +379,13 @@ public class InteligenciaArtificial {
                                     testaPossibilidadeVitoria[0].coluna + 1);
                     vazios[idCV] = 1;
 
-                    return -11;
+                    //return -10;
                     /*N?o ? bom retornar zero pois pode levar a uma vit?rio, 
                      isto ? ter valor 10.*/
                 } else if (testaPossibilidadeVitoria.length >= 2) {
                     //Advers?rio tem pelo menos duas possi vi
                     System.out.println("2 possibilidades de vit?ria");
-                    pontuacao = -12;
+                    pontuacao = -11;
                     return pontuacao;
                 }
             } else {
@@ -394,7 +395,7 @@ public class InteligenciaArtificial {
 
             //MAx
             //17/05/18 7:51 - Este deveria ser considera linha min
-            int melhor = -10;//Integer.MIN_VALUE;
+            int melhor = -12;//Integer.MIN_VALUE;
             int tamVazios = vazios.length;
             System.out.println("Testando vazios em: ");
             tabuleiro.imprime();
@@ -479,15 +480,17 @@ public class InteligenciaArtificial {
                      */
                     //
                     //  vazios = new int[1];
-                    int idCV = Tabuleiro.retornaIndice(psV[0].linha + 1, psV[0].coluna + 1);
+                    int idCV = Tabuleiro.retornaIndice(psV[0].linha + 1, 
+                            psV[0].coluna + 1);
                     vazios[idCV] = 1;
-                    return 11;
+                   // return 10;
                 } else if (psV.length >= 2) {
                     /*Duas possibilidades vit para O
-                     Esse tabuleiro(filho) tem certamente pontua??o 10(para max -O)
+                     Esse tabuleiro(filho) tem certamente pontua??o 10(para 
+                    max -O)
                      */
                     //  System.out.println("2 poss");
-                    return 12;
+                    return 11;
                 }
             } else {
                 //Retornar o menor do advers?rio
@@ -499,7 +502,7 @@ public class InteligenciaArtificial {
              * O| | |X| | |
              */
             //  Vector vazios = recebeVazios(tabuleiro);
-            int pior = 10;///Integer.MAX_VALUE;
+            int pior = Integer.MAX_VALUE;///Integer.MAX_VALUE;
             int tamV = vazios.length;
             TabuleiroMatriz filho;
             String titB;

@@ -12,7 +12,8 @@
         </group>
         <group name="Jogos 20181119-03:21:25"/>
         <group>
-            <file>file:/F:/Est/Inf/Prog/Proj/Jogo-da-velha---Prop-MM/nbproject/project.properties</file>
+            <file>file:/F:/Est/Inf/Prog/Proj/Jogo-da-velha---Prop-MM/src/br/diego/jogovelha/jogo/Constantes.java</file>
+            <file>file:/F:/Est/Inf/Prog/Proj/Jogo-da-velha---Prop-MM/src/br/diego/jogovelha/jogo/ia/InteligenciaArtificial.java</file>
         </group>
     </open-files>
 </project-private>
